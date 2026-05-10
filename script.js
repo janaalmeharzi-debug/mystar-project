@@ -11,13 +11,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.getElementById("nextBtn");
   if (nextBtn) {
     nextBtn.addEventListener("click", () => {
-      window.location.href = "second.html"; // رابط مباشر للصفحة الثانية
+      window.location.href = "second.html"; // رابط مباشر
     });
   }
 
-  // الفيد إن للصفحة + النصوص
+  // الفيد إن للنصوص
   setTimeout(() => {
-    document.body.classList.add("show");
     const elements = document.querySelectorAll(".fade-text");
     elements.forEach((el, index) => {
       setTimeout(() => {
@@ -33,39 +32,31 @@ document.addEventListener("DOMContentLoaded", () => {
   if (wrappers.length > 0 && extraText) {
     wrappers.forEach(wrapper => {
       wrapper.addEventListener("click", () => {
-        if (wrapper.classList.contains("active")) {
-          wrapper.classList.remove("active");
-          extraText.innerHTML = "";
-          extraText.style.opacity = 0;
-        } else {
-          wrappers.forEach(w => w.classList.remove("active"));
-          wrapper.classList.add("active");
+        wrappers.forEach(w => w.classList.remove("active"));
+        wrapper.classList.add("active");
 
-          let text = wrapper.dataset.extra;
-          let words = text.split(" ");
-          extraText.innerHTML = "";
-          extraText.style.opacity = 1;
+        let text = wrapper.dataset.extra;
+        let words = text.split(" ");
+        extraText.innerHTML = "";
+        extraText.style.opacity = 1;
 
-          words.forEach((word, i) => {
+        words.forEach((word, i) => {
+          setTimeout(() => {
+            const span = document.createElement("span");
+            span.textContent = word;
+            span.classList.add("word");
+            extraText.appendChild(span);
+            extraText.appendChild(document.createTextNode(" "));
+
+            span.classList.add("bounce");
             setTimeout(() => {
-              const span = document.createElement("span");
-              span.textContent = word;
-              span.classList.add("word");
-              extraText.appendChild(span);
-              extraText.appendChild(document.createTextNode(" "));
-
-              // القفزة عند أول ظهور
-              span.classList.add("bounce");
-              setTimeout(() => {
-                span.classList.remove("bounce");
-              }, 500);
-            }, i * 200);
-          });
-        }
+              span.classList.remove("bounce");
+            }, 500);
+          }, i * 200);
+        });
       });
     });
 
-    // القفزة عند المرور بالماوس
     extraText.addEventListener("mouseover", e => {
       if (e.target.classList.contains("word")) {
         e.target.classList.add("bounce");
@@ -76,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // أيقونة يسار + تأثير
+  // أيقونة يسار
   const leftIcon = document.getElementById("left-icon");
   if (leftIcon) {
     leftIcon.addEventListener("click", () => {
