@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>الصفحة الثانية</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <style>
+    .word {
+      display: inline-block;
+      cursor: pointer;
+    }
+    .bounce {
+      animation: bounceOnce 0.5s;
+    }
+    @keyframes bounceOnce {
+      0%   { transform: translateY(0); }
+      30%  { transform: translateY(-15px); }
+      60%  { transform: translateY(0); }
+      100% { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="fade">
+  <div class="second-page">
+    <h1 class="fade-text">What is Oman Exa? 🌐</h1>
+    <p class="fade-text">Scroll to learn more about us! 🖋️</p>
+
+    <div class="icons">
+      <div class="icon-wrapper" 
+           data-extra="Oman Exa is a simple program created to support a competition idea, but the design team did not win. In short, Oman Exa is a simple program to help students understand lessons through an active artificial intelligence approach, specifically designed for students in the Sultanate of Oman, helping them organize their time and understand concepts in an engaging way">
+        <i class="bi bi-globe"></i>
+        <div class="icon-text">what is it? 🤔</div>
+      </div>
+
+      <div class="icon-wrapper" 
+           data-extra="The project's concept stems from a desire to simplify curricula, facilitate research and self-learning for students, and help them organize their time more easily and enjoyably with reminder notifications. It also provides educational games related to the student's specific curriculum.">
+        <i class="bi bi-at"></i>
+        <div class="icon-text">why?</div>
+      </div>
+
+      <div class="icon-wrapper" 
+           data-extra="Starting from a simple competition idea, the Oman Exa team plans to launch the project and support every Omani student over time">
+        <i class="bi bi-phone"></i>
+        <div class="icon-text">our future 🧑‍🎓</div>
+      </div>
+    </div>
+
+    <!-- النص الإضافي فارغ بالبداية -->
+    <div id="extra-text"></div>
+  </div>
+
+  <!-- أيقونة مستقلة -->
+  <div id="left-icon">
+    <i class="bi bi-star"></i>
+  </div>
+
+  <script>
+    window.onload = () => {
+      document.body.style.opacity = 1;
+      const texts = document.querySelectorAll(".fade-text");
+      texts.forEach((el, index) => {
+        setTimeout(() => {
+          el.style.opacity = 1;
+          el.style.transform = "translateY(0)";
+        }, 500 * (index + 1));
+      });
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const wrappers = document.querySelectorAll(".icon-wrapper");
+      const extraText = document.getElementById("extra-text");
+
+      wrappers.forEach(wrapper => {
+        wrapper.addEventListener("click", () => {
+          wrappers.forEach(w => w.classList.remove("active"));
+          wrapper.classList.add("active");
+
+          let text = wrapper.dataset.extra;
+          let words = text.split(" ");
+          extraText.innerHTML = ""; // تفريغ النص قبل الكتابة
+
+          words.forEach((word, i) => {
+            setTimeout(() => {
+              const span = document.createElement("span");
+              span.textContent = word;
+              span.classList.add("word");
+              extraText.appendChild(span);
+              extraText.appendChild(document.createTextNode(" "));
+
+              // القفزة عند أول ظهور
+              span.classList.add("bounce");
+              setTimeout(() => {
+                span.classList.remove("bounce");
+              }, 500);
+            }, i * 200);
+          });
+        });
+      });
+
+      // القفزة عند المرور بالماوس
+      extraText.addEventListener("mouseover", e => {
+        if (e.target.classList.contains("word")) {
+          e.target.classList.add("bounce");
+          setTimeout(() => {
+            e.target.classList.remove("bounce");
+          }, 500);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

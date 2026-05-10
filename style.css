@@ -1,0 +1,364 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* خلفية متدرجة */
+.hero {
+  height: 100vh;
+  background: linear-gradient(to bottom right, #001830, #1d4263);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* النص في يمين الشاشة */
+}
+
+/* النص الكبير */
+.text-box {
+  margin-right: 80px;
+  text-align: right;
+}
+
+.text-box h1 {
+  font-size: 7em;   /* خط ضخم جدًا */
+  color: rgb(255, 255, 255);     /* أبيض */
+  margin: 20px 0;
+}
+
+.text-box h3 {
+  font-size: 3em;   /* خط متوسط */
+  color: #7c82b9;   /* تركواز فاتح */
+  margin: 10px 0;
+}
+
+.text-box h4 {
+  font-size: 1.5em;
+  color: rgb(9, 0, 61); /* أزرق */
+  margin: 5px 0;
+  position: absolute;     /* تثبيت العنصر */
+  bottom: 20px;           /* المسافة من الأسفل */
+  left: 50%;              /* وضعه في منتصف الشاشة أفقيًا */
+  transform: translateX(-50%); /* تعديل ليكون بالضبط في المنتصف */
+}
+
+/* أنيميشن الفيد إن */
+@keyframes fadeIn {
+  from {
+    opacity: 0;   /* البداية شفافة */
+    transform: translateY(20px); /* نزول بسيط */
+  }
+  to {
+    opacity: 1;   /* النهاية واضحة */
+    transform: translateY(0);    /* يرجع مكانه الطبيعي */
+  }
+}
+
+/* النصوص */
+.text-box h1,
+.text-box h3,
+.text-box h4 {
+  opacity: 0; /* تبدأ مخفية */
+  animation: fadeIn 2s ease forwards; /* مدة 2 ثانية */
+}
+
+/* ترتيب ظهور النصوص */
+.text-box h1 {
+  animation-delay: 0.5s;
+}
+
+.text-box h3 {
+  animation-delay: 1.5s;
+}
+
+.text-box h4 {
+  animation-delay: 2.5s;
+}
+.text-box h1,
+.text-box h3,
+.text-box h4 {
+  opacity: 0; /* مخفي عند البداية */
+  transition: opacity 1s ease;
+}
+
+.notification {
+  position: fixed;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  background: rgb(85, 83, 107);
+  border: 8px solid rgb(65, 57, 78);
+  border-radius: 12px; /* حواف ناعمة */
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25); /* ظل أنيق */
+  z-index: 9999;
+  opacity: 0;
+  padding: 12px 16px; /* مسافة داخلية مريحة */
+  display: flex; /* يسمح بترتيب النصوص */
+  align-items: center; /* يوسّط النص عموديًا */
+  justify-content: center; /* يوسّط النص أفقيًا */
+}
+
+
+
+
+
+.notification p {
+  margin: 0;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  font-family: "Arial", sans-serif;
+}
+
+.notification.show {
+  animation: slideDown 0.5s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    top: -80px;
+  }
+  to {
+    opacity: 1;
+    top: 20px;
+  }
+}
+/* زر صغير أسفل يمين الشاشة */
+.next-btn {
+  position: fixed;       /* يثبّت الزر */
+  bottom: 20px;          /* يبعده عن أسفل الشاشة */
+  right: 20px;           /* يبعده عن يمين الشاشة */
+  background: #444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+  transition: background 0.3s ease;
+  z-index: 2000;         /* فوق أي عناصر أخرى */
+}
+
+.next-btn:hover {
+  background: #666;
+}
+
+/* الفيد إن للصفحة */
+body.fade {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+body.fade.show {
+  opacity: 1;
+}
+
+/* الفيد إن للصفحة */
+body.fade {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+body.fade.show {
+  opacity: 1;
+}
+
+/* النص في أعلى منتصف الصفحة */
+.second-page {
+  height: 100vh;
+  background: #222;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* يخلي النص أعلى */
+  align-items: center;
+  padding-top: 10%;
+  font-family: Arial, sans-serif;
+}
+
+
+/* الفيد إن للنصوص */
+.fade-text {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.fade-text.show {
+  opacity: 1;
+}
+
+
+
+.fade-text {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.fade-text.show {
+  opacity: 1;
+}
+
+
+.icons {
+  display: flex;
+  gap: 70px; /* المسافة بين الأيقونات */
+  margin-top: 30px;
+  font-size: 50px;
+  color: white;
+}
+
+.icon-wrapper {
+  text-align: center;
+  cursor: pointer;
+}
+
+.icon-wrapper i {
+   opacity: 0.3; /* البداية شفافة */
+  transition: transform 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+  display: block;
+}
+
+/* النص مخفي بالبداية */
+.icon-text {
+  opacity: 0;
+  font-size: 28px; /* نص أكبر يناسب حجم الأيقونة */
+  margin-top: 20px;
+  transition: opacity 0.3s ease;
+  color: #ddd;
+  white-space: normal;       /* يسمح للنص ينزل سطر جديد */
+  word-wrap: break-word;     /* يكسر الكلمات الطويلة */
+}
+
+/* عند التمرير */
+.icon-wrapper:hover i {
+  transform: scale(1.1);
+  color: #00aced;
+  opacity: 1;
+}
+
+/* عند الضغط */
+.icon-wrapper.active i {
+  transform: scale(1.3); /* تكبير أكثر عند الضغط */
+  color: #00aced;
+  opacity: 1;
+}
+
+.icon-wrapper.active .icon-text {
+  opacity: 1; /* النص يظهر عند الضغط */
+}
+
+ body.fade {
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+body {
+  background-color: #121212;
+  color: white;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* النصوص تحت الأيقونات مخفية بالبداية */
+.icon-text {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  margin-top: 10px;
+  font-size: 22px;
+  color: #ddd;
+}
+
+
+/* النص الإضافي في يمين الصفحة */
+#extra-text {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: #fdfdfd;
+ 
+  max-width: 300px; /* عشان النص الطويل يلتف */
+  line-height: 1.6;
+}
+
+
+
+.icon-wrapper i {
+  transition: transform 0.3s ease, color 0.3s ease;
+  color: white; /* اللون الطبيعي */
+}
+
+.icon-wrapper.active i {
+  transform: scale(1.3); /* تكبير عند الضغط */
+  color: #00aced;        /* لون مميز عند الضغط */
+}
+
+.word {
+  display: inline-block;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.bounce {
+  animation: bounceOnce 0.5s;
+  color: #00aced; /* اللون أثناء القفزة */
+}
+
+@keyframes bounceOnce {
+  0%   { transform: translateY(0); }
+  30%  { transform: translateY(-15px); }
+  60%  { transform: translateY(0); }
+  100% { transform: translateY(0); }
+}
+
+
+#left-icon {
+  position: fixed;       /* مستقلة وثابتة في الصفحة */
+  left: 30px;            /* آخر يسار */
+  bottom: 50px;          /* قريب من أسفل */
+  font-size: 35px;
+  color: #ffcc00;        /* لون مميز */
+  opacity: 1;            /* تظهر من البداية */
+  animation: bounce 1.5s infinite; /* حركة قفزة مستمرة */
+  cursor: pointer;       /* مؤشر يد عند المرور */
+}
+
+/* حركة القفزة */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* حركة الوميض */
+.flash {
+  animation: flash 0.3s ease;
+}
+
+@keyframes flash {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+
+
+#body.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+#new-content {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 24px;
+  color: #ffcc00;
+}

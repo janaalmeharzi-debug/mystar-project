@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>المنصة الأولى</title>
+    <!-- الربط الصحيح مع ملف CSS داخل مجلد static -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="hero">
+        <div class="text-box">
+            <h1>oman exa</h1>
+            <h3>study-fun</h3>
+            <h4>by: Jana mohmmed</h4>
+        </div>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>الصفحة الرئيسية</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <!-- إشعار كزينة -->
+  <div id="notification" class="notification">
+    <p>Oman Exa</p>
+
+  <!-- زر صغير في أسفل يمين الصفحة -->
+  <button id="nextBtn" class="next-btn">⚡</button>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+
+
