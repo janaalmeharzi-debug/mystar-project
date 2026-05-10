@@ -22,17 +22,20 @@
     <p class="fade-text">Scroll to learn more about us! 🖋️</p>
 
     <div class="icons">
-      <div class="icon-wrapper" data-extra="Oman Exa is a simple program created to support a competition idea...">
+      <div class="icon-wrapper" 
+           data-extra="Oman Exa is a simple program created to support a competition idea...">
         <i class="bi bi-globe"></i>
         <div class="icon-text">what is it? 🤔</div>
       </div>
 
-      <div class="icon-wrapper" data-extra="The project's concept stems from a desire to simplify curricula...">
+      <div class="icon-wrapper" 
+           data-extra="The project's concept stems from a desire to simplify curricula...">
         <i class="bi bi-at"></i>
         <div class="icon-text">why?</div>
       </div>
 
-      <div class="icon-wrapper" data-extra="Starting from a simple competition idea, the Oman Exa team plans...">
+      <div class="icon-wrapper" 
+           data-extra="Starting from a simple competition idea, the Oman Exa team plans...">
         <i class="bi bi-phone"></i>
         <div class="icon-text">our future 🧑‍🎓</div>
       </div>
@@ -45,62 +48,61 @@
     <i class="bi bi-star"></i>
   </div>
 
-  <script src="script.js"></script>
-<script>
-  window.onload = () => {
-    document.body.style.opacity = 1;
-    const texts = document.querySelectorAll(".fade-text");
-    texts.forEach((el, index) => {
-      setTimeout(() => {
-        el.style.opacity = 1;
-        el.style.transform = "translateY(0)";
-      }, 500 * (index + 1));
-    });
-  };
+  <!-- سكربت داخلي مرتب -->
+  <script>
+    window.onload = () => {
+      document.body.style.opacity = 1;
+      const texts = document.querySelectorAll(".fade-text");
+      texts.forEach((el, index) => {
+        setTimeout(() => {
+          el.style.opacity = 1;
+          el.style.transform = "translateY(0)";
+        }, 500 * (index + 1));
+      });
+    };
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const wrappers = document.querySelectorAll(".icon-wrapper");
-    const extraText = document.getElementById("extra-text");
+    document.addEventListener("DOMContentLoaded", () => {
+      const wrappers = document.querySelectorAll(".icon-wrapper");
+      const extraText = document.getElementById("extra-text");
 
-    wrappers.forEach(wrapper => {
-      wrapper.addEventListener("click", () => {
-        wrappers.forEach(w => w.classList.remove("active"));
-        wrapper.classList.add("active");
+      wrappers.forEach(wrapper => {
+        wrapper.addEventListener("click", () => {
+          wrappers.forEach(w => w.classList.remove("active"));
+          wrapper.classList.add("active");
 
-        let text = wrapper.dataset.extra;
-        let words = text.split(" ");
-        extraText.innerHTML = ""; // تفريغ النص قبل الكتابة
+          let text = wrapper.dataset.extra;
+          let words = text.split(" ");
+          extraText.innerHTML = ""; // تفريغ النص قبل الكتابة
 
-        words.forEach((word, i) => {
-          setTimeout(() => {
-            const span = document.createElement("span");
-            span.textContent = word;
-            span.classList.add("word");
-            extraText.appendChild(span);
-            extraText.appendChild(document.createTextNode(" "));
-
-            // القفزة عند أول ظهور
-            span.classList.add("bounce");
+          words.forEach((word, i) => {
             setTimeout(() => {
-              span.classList.remove("bounce");
-            }, 500);
-          }, i * 200);
+              const span = document.createElement("span");
+              span.textContent = word;
+              span.classList.add("word");
+              extraText.appendChild(span);
+              extraText.appendChild(document.createTextNode(" "));
+
+              // القفزة عند أول ظهور
+              span.classList.add("bounce");
+              setTimeout(() => {
+                span.classList.remove("bounce");
+              }, 500);
+            }, i * 200);
+          });
         });
       });
-    });
 
-    // القفزة عند المرور بالماوس
-    extraText.addEventListener("mouseover", e => {
-      if (e.target.classList.contains("word")) {
-        e.target.classList.add("bounce");
-        setTimeout(() => {
-          e.target.classList.remove("bounce");
-        }, 500);
-      }
+      // القفزة عند المرور بالماوس
+      extraText.addEventListener("mouseover", e => {
+        if (e.target.classList.contains("word")) {
+          e.target.classList.add("bounce");
+          setTimeout(() => {
+            e.target.classList.remove("bounce");
+          }, 500);
+        }
+      });
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
 
