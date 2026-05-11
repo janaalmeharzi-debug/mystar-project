@@ -78,3 +78,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const leftIcon = document.getElementById("left-icon");
+  const chatbox = document.getElementById("chatbox");
+  const sendBtn = document.getElementById("sendBtn");
+  const chatMessage = document.getElementById("chatMessage");
+  const chatContent = document.querySelector(".chat-content");
+
+  if (leftIcon) {
+    leftIcon.addEventListener("click", () => {
+      chatbox.style.display = "block"; // إظهار مربع المحادثة
+    });
+  }
+
+  if (sendBtn) {
+    sendBtn.addEventListener("click", () => {
+      const msg = chatMessage.value.trim();
+      if (msg !== "") {
+        const p = document.createElement("p");
+        p.textContent = msg;
+        chatContent.appendChild(p);
+        chatMessage.value = "";
+      }
+    });
+  }
+});
+
