@@ -262,3 +262,53 @@ body.fade-out {
   font-size: 24px;
   color: #ffcc00;
 }
+.chat-label {
+  margin-left: 10px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.chatbox {
+  display: none; /* مخفي بالبداية */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #001830; /* أزرق غامق */
+  z-index: 3000;
+  padding: 40px;
+  box-sizing: border-box;
+}
+
+.chat-content {
+  background: #1d4263; /* أزرق فاتح */
+  height: 70%;
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+  color: white;
+  font-size: 18px;
+}
+
+.chat-input {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.chat-input input {
+  width: 60%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-right: 10px;
+}
+
+.chat-input button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #ffcc00;
+  cursor: pointer;
+}
