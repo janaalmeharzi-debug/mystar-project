@@ -67,19 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // أيقونة يسار
-  const leftIcon = document.getElementById("left-icon");
-  if (leftIcon) {
-    leftIcon.addEventListener("click", () => {
-      leftIcon.classList.add("flash");
-      setTimeout(() => {
-        leftIcon.classList.remove("flash");
-      }, 500);
-    });
-  }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
+  // أيقونة يسار + الشات
   const leftIcon = document.getElementById("left-icon");
   const chatbox = document.getElementById("chatbox");
   const sendBtn = document.getElementById("sendBtn");
@@ -88,7 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (leftIcon) {
     leftIcon.addEventListener("click", () => {
-      chatbox.style.display = "block"; // إظهار مربع المحادثة
+      leftIcon.classList.add("flash");
+      setTimeout(() => {
+        leftIcon.classList.remove("flash");
+      }, 500);
+
+      // إظهار مربع المحادثة
+      if (chatbox) {
+        chatbox.style.display = "block";
+      }
     });
   }
 
@@ -104,4 +100,5 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
 
